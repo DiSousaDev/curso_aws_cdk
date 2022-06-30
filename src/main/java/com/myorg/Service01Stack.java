@@ -47,6 +47,7 @@ public class Service01Stack extends Stack {
                         .build()
                 )
                 .publicLoadBalancer(true)
+                .assignPublicIp(true)
                 .build();
 
         service01.getTargetGroup().configureHealthCheck(new HealthCheck.Builder()
