@@ -33,6 +33,7 @@ public class Service01Stack extends Stack {
         envVariables.put("SPRING_DATASOURCE_URL", "jdbc:mariadb://" + Fn.importValue("rds-endpoint")
                 + ":3306/aws_project01?createDatabaseIfNotExist=true");
         envVariables.put("SPRING_DATASOURCE_USERNAME", "admin");
+        envVariables.put("SPRING_PROFILE_ACTIVE", "dev");
         envVariables.put("SPRING_DATASOURCE_PASSWORD", Fn.importValue("rds-password"));
 
 
@@ -46,7 +47,7 @@ public class Service01Stack extends Stack {
                 .taskImageOptions(
                         ApplicationLoadBalancedTaskImageOptions.builder()
                                 .containerName("aws_project1")
-                                .image(ContainerImage.fromRegistry("disousadev/aws_project1:1.1.0"))
+                                .image(ContainerImage.fromRegistry("disousadev/aws_project1:1.2.0"))
                                 .containerPort(8080)
                                 .logDriver(LogDriver.awsLogs(AwsLogDriverProps.builder()
                                         .logGroup(LogGroup.Builder.create(this, "Service01LogGroup")
